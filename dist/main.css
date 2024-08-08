@@ -1,0 +1,162 @@
+/*!*****************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/style.css ***!
+  \*****************************************************************/
+/*
+  Josh's Custom CSS Reset
+  https://www.joshwcomeau.com/css/custom-css-reset/
+*/
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+  * {
+    margin: 0;
+}
+body {
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+img, picture, video, canvas, svg {
+    display: block;
+    max-width: 100%;
+}
+input, button, textarea, select {
+    font: inherit;
+}
+p, h1, h2, h3, h4, h5, h6 {
+    overflow-wrap: break-word;
+}
+#root, #__next {
+    isolation: isolate;
+}
+
+/* My CSS */
+.sidebar button
+{
+    /* background: none; */
+    font-size: 1rem;
+    width: 7rem;
+    text-align: justify;
+}
+button:hover
+{
+    background-color: lightcoral;
+}
+.grid-container
+{
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+    height: 100vh;
+}
+
+.sidebar
+{
+    background-color:lightgray;
+    grid-column: 1;
+
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: minmax(auto,400px) 1fr ;
+
+}
+.upper,.lower
+{
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: start;
+    padding-top: 1rem;
+    margin: 0 20%;
+}
+.main-container
+{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: minmax(auto,100px) 1fr ;
+    background-color: black;
+}
+.buttons
+{
+    display: flex;
+    justify-content: space-around;
+    margin: auto 0;
+    max-height: 500px;
+}
+.main
+{
+    display: grid;
+    background-color: white;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    column-gap: 5rem;
+    row-gap: 2rem;
+    justify-items: center;
+    padding: 3rem;
+
+}
+.items
+{
+    background-color: lightblue;
+    border: 5px solid  #164e63;
+    min-width: 250px;
+    min-height: 250px;
+    max-height: 250px;
+    overflow: auto;  
+    text-align: center ;
+}
+.items>*:not(.complete-mark,.delete-mark)
+{
+    display: flex;
+    width: 250px;
+    word-break: break-all;
+    text-align: left;
+    margin-left: 1rem;
+    /* overflow-wrap:break-word; */
+}
+.title
+{
+    font-size: 1.5rem;
+    font-weight: bolder;
+}
+.complete-mark,.delete-mark
+{
+    margin: 0 1rem;
+}
+.items.complete
+{
+    background-color: lightgreen;
+    text-decoration: line-through ;
+}
+dialog
+{
+    margin: auto;
+    /* height: 50vh; */
+    width: 35vw;
+}
+form:not(#delete-project-form)
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+    /* align-items: center; */
+}
+span
+{
+    text-align: right;
+    margin-left: 50px;
+}
+li,ul
+{
+    font-size: 1.2rem;
+    color: blue;
+    list-style: none;
+    text-decoration: solid underline;
+}
+#projects
+{
+    font-size: 1.5rem;
+    font-weight:bold;
+    border: none;
+    background:none;
+}
+
+
