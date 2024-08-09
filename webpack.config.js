@@ -10,7 +10,7 @@ module.exports = {
   },
   plugins:[
     new HtmlWebpackPlugin({
-      title:"Todo App",
+      title:"Forecast First",
       template: "./src/index.html",
       filename: 'index.html',
       inject:"head",
