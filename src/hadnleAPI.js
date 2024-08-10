@@ -4,6 +4,7 @@ async function getLocation(city) {
 		{ mode: "cors" },
 	);
 	const whetherData = await response.json();
+	console.log(whetherData);
 	const whetherRecord = createWhetherObject(whetherData);
 	return whetherRecord;
 }
@@ -20,6 +21,7 @@ function createWhetherObject(whetherData) {
 	// console.log(whetherObject);
 
 	const whetherRecord = whetherData.days.map((day) => ({
+		location: whetherData.resolvedAddress,
 		temperature: day.temp,
 		maxTemperature: day.tempmax,
 		minTemperature: day.tempmin,
@@ -28,6 +30,7 @@ function createWhetherObject(whetherData) {
 		condition: day.conditions,
 		description: day.description,
 		icon: day.icon,
+		dateTime: day.datetime,
 	}));
 	return whetherRecord;
 }
