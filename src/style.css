@@ -44,5 +44,45 @@ h6 {
 
 /* My CSS */
 body {
-	background-color: purple;
+	height: 100vh;
+}
+img {
+	width: 100px;
+	height: auto;
+}
+header {
+}
+.data {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+	background-color: antiquewhite;
+	align-content: center;
+}
+.location {
+	grid-column: 1/6;
+	/* place-self: center; */
+	text-align: center;
+	font-size: 2.5rem;
+	background-color: aquamarine;
+}
+.temperature {
+	grid-row: 2;
+	grid-column: 3;
+	place-self: center;
+	font-size: 5rem;
+}
+.icon-condition {
+	grid-row: 2;
+	grid-column: 2;
+	place-self: center;
+	display: flex;
+	flex-direction: column;
+}
+.whether-container {
+	grid-row: 2;
+	grid-column: 4;
+	place-self: center;
+	font-size: 1rem;
+	display: flex;
+	flex-direction: column;
 }
