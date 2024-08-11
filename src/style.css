@@ -48,7 +48,7 @@ body {
 	background-color: lightcyan;
 	/* color: #454545; */
 	color: black;
-	background: url(/dist/whether3.jpg);
+	background: url(/dist/weather3.jpg);
 	background-size: 100vw;
 }
 img {
@@ -110,7 +110,7 @@ header {
 	align-items: center;
 	font-family: Arial, Helvetica, sans-serif;
 }
-.whether-container {
+.weather-container {
 	grid-row: 2;
 	grid-column: 4;
 	place-self: center;
