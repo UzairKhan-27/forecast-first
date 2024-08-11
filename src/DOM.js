@@ -10,15 +10,15 @@ async function handleSearch(event) {
 	console.log(userSearch.value);
 	searchResult = await getLocation(userSearch.value);
 	console.log(searchResult);
-	displayWhetherData();
+	displayWeatherData();
 }
-function displayWhetherData() {
-	let degreeSymbol = "\u00B0";
+let degreeSymbol = "\u00B0";
+function displayWeatherData(index = 0) {
 	console.log(degreeSymbol);
 
 	const main = document.querySelector("main");
 	main.textContent = "";
-	console.log(searchResult[0]);
+	console.log(searchResult[index]);
 
 	const day = document.createElement("div");
 	// day.setAttribute("id", "0");
@@ -26,38 +26,38 @@ function displayWhetherData() {
 
 	const location = document.createElement("div");
 	location.classList.add("location");
-	location.textContent = `${searchResult[0].location} ,   ${searchResult[0].dateTime}`;
+	location.textContent = `${searchResult[index].location} , ${searchResult[index].dateTime} , ${searchResult[index].dayName} `;
 
 	const temperature = document.createElement("div");
 	temperature.classList.add("temperature");
-	temperature.textContent = `${searchResult[0].temperature}${degreeSymbol}F`;
+	temperature.textContent = `${searchResult[index].temperature}${degreeSymbol}C`;
 
 	const humidity = document.createElement("div");
 	humidity.classList.add("humidity");
-	humidity.textContent = `Humidity : ${searchResult[0].humidity}${degreeSymbol}F`;
+	humidity.textContent = `Humidity : ${searchResult[index].humidity}%`;
 
 	const maxTemperature = document.createElement("div");
 	maxTemperature.classList.add("maxTemperature");
-	maxTemperature.textContent = `High : ${searchResult[0].maxTemperature}${degreeSymbol}F`;
+	maxTemperature.textContent = `High : ${searchResult[index].maxTemperature}${degreeSymbol}C`;
 
 	const minTemperature = document.createElement("div");
 	minTemperature.classList.add("minTemperature");
-	minTemperature.textContent = `Low : ${searchResult[0].minTemperature}${degreeSymbol}F`;
+	minTemperature.textContent = `Low : ${searchResult[index].minTemperature}${degreeSymbol}C`;
 
 	const feelsLike = document.createElement("div");
 	feelsLike.classList.add("feelsLike");
-	feelsLike.textContent = `Feels Like : ${searchResult[0].feelsLike}${degreeSymbol}F`;
+	feelsLike.textContent = `Feels Like : ${searchResult[index].feelsLike}${degreeSymbol}C`;
 
 	const condition = document.createElement("div");
 	condition.classList.add("condition");
-	condition.textContent = `${searchResult[0].condition}`;
+	condition.textContent = `${searchResult[index].condition}`;
 
 	const img = document.createElement("img");
 	img.classList.add("icon");
-	img.src = `${searchResult[0].icon}.png`;
+	img.src = `${searchResult[index].icon}.png`;
 
 	const containerDiv = document.createElement("div");
-	containerDiv.classList.add("whether-container");
+	containerDiv.classList.add("weather-container");
 
 	const containerDiv2 = document.createElement("div");
 	containerDiv2.classList.add("icon-condition");
@@ -99,12 +99,31 @@ function displayWhetherData() {
 
 function createButtons() {
 	const main = document.querySelector("main");
+	const buttonContainer = document.createElement("div");
+
 	let i = 0;
 	searchResult.forEach((search) => {
+		buttonContainer.classList.add("button-container");
+
 		const button = document.createElement("button");
 		button.textContent = search.dateTime;
 		button.setAttribute("id", i);
-		main.appendChild(button);
+
+		const dayName = document.createElement("span");
+		dayName.textContent = search.dayName;
+
+		const img = document.createElement("img");
+		img.classList.add("icon-smaller");
+		img.src = `${search.icon}.png`;
+
+		const temperature = document.createElement("div");
+		temperature.textContent = `${search.temperature}${degreeSymbol}C`;
+
+		button.appendChild(dayName);
+		button.appendChild(img);
+		button.appendChild(temperature);
+		buttonContainer.appendChild(button);
+		main.appendChild(buttonContainer);
 		i++;
 	});
 	attachEventListenerOnDates();
@@ -114,8 +133,9 @@ function attachEventListenerOnDates() {
 	const buttons = document.querySelectorAll("main button");
 	buttons.forEach((button) => {
 		button.addEventListener("click", (event) => {
-			index = event.target.id;
-			displayWhetherData(index);
+			index = event.currentTarget.id;
+			console.log("h" + index);
+			displayWeatherData(index);
 		});
 	});
 }
